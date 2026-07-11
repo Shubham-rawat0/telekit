@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
 import { Hono, type Context } from "hono";
 import { createClerkClient } from "@clerk/backend";
-import { sendTelegramMessage, telegramMessageInputSchema } from "sendkit-core";
+import { sendTelegramMessage, telegramMessageInputSchema } from "@sr_telekit/sendkit-core";
 import { generateClerkProtectedResourceMetadata } from "@clerk/mcp-tools/server";
 
 const clerkPublishableKey = process.env.CLERK_PUBLISHABLE_KEY;
