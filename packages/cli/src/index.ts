@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Command } from "commander";
 import { homedir } from "node:os";
 import { dirname, join } from "node:path";
@@ -21,28 +22,28 @@ function writeTelegramBotToken(token: string) {
 
 function getTelegramBotToken() {
   if (!existsSync(configPath)) {
-    throw new Error("Telegram bot token is required, Run `sendkit init`");
+    throw new Error("Telegram bot token is required, Run `telekit init`");
   }
 
   const config = cliConfigSchema.parse(JSON.parse(readFileSync(configPath, "utf8")));
   const token = config.telegramBotToken;
 
   if (!token) {
-    throw new Error("Telegram bot token is required, Run `sendkit init`");
+    throw new Error("Telegram bot token is required, Run `telekit init`");
   }
 
   return token;
 }
 
-program.name("sendkit").description("sendkit CLI backed by sendkit-core");
+program.name("telekit").description("telekit CLI backed by sendkit-core");
 
 program
   .command("init")
-  .description("configure Sendkit CLI local settings")
+  .description("configure Telekit CLI local settings")
   .requiredOption("--telegram-bot-token <botToken>", "Telegram bot token")
   .action(async (options: { telegramBotToken: string }) => {
     writeTelegramBotToken(options.telegramBotToken);
-    console.log(`saved sendkit CLI config to ${configPath}`);
+    console.log(`saved telekit CLI config to ${configPath}`);
   });
 
 program
